@@ -1,0 +1,42 @@
+-
+  function formatNumber(x) { 
+    //- https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, " ");
+  }
+
+  function checkForUndefined(input) { 
+    return input === 'unknown' ? '?' : formatNumber(input);
+  }
+
+  function calculateSurfaceArea(diameter, surface_water) { 
+    //- circle surface area = 4(pi)(r^2)
+    if (diameter === 'unknown' || surface_water === 'unknown') {
+      return '?';
+    } 
+    else {
+      let radius = diameter / 2;
+      let surfaceArea = 4 * Math.PI * Math.pow(radius, 2);
+      let pctWater = surface_water * .01;
+      return formatNumber(Math.round(surfaceArea * pctWater));
+    }
+  }
+
+if !error
+  table.planets
+    tr 
+      th.planet Planet
+      th.climates Climates
+      th.residents Residents 
+      th.terrains Terrains 
+      th.population Population 
+      th.surfacearea Water Surface Area (in km!{'<sup>2</sup>'})
+    each planet in data.results
+      tr 
+        td.planet: a(href=`${planet.url}`)= `${checkForUndefined(planet.name)}`
+        td.climates= `${checkForUndefined(planet.climate)}`
+        td.residents= `${planet.residents.length}`
+        td.terrains= `${checkForUndefined(planet.terrain)}`
+        td.population= `${checkForUndefined(planet.population)}`
+        td.surfacearea= `${calculateSurfaceArea(planet.diameter, planet.surface_water)}`
+else 
+  #errorMessage= error

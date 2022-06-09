@@ -1,0 +1,19 @@
+{
+  "name": "swloreservice",
+  "version": "1.0.0",
+  "description": "Takehome Exercise written by Chris Clarke for Truss Software engineering interview.",
+  "main": "index.js",
+  "scripts": {
+    "start": "SET NODE_ENV=production & node app.js",
+    "dev": "SET DEBUG=node:* & nodemon ./app.js"
+  },
+  "author": "Chris Clarke",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "express-autoprefixer": "^5.4.0",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {}
+}
